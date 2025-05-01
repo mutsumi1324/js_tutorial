@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mutsumi-palindrome": "^0.1.0",
+    "urllib": "^4.6.11"
+  }
+}

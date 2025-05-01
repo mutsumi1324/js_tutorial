@@ -1,0 +1,21 @@
+#!/Users/mutsumi/.nodebrew/current/bin/node
+
+let urllib = require("urllib");
+let Phrase = require("mutsumi-palindrome");
+let url = 'https://cdn.learnenough.com/phrases.txt'
+
+async function fetchPalindromes() {
+    let {error, data, response} = await urllib.request(url, {followRedirect: true});
+    let body = data.toString();
+    let lines = body.split("\n")
+    let palindromes = lines.filter( line => {return new Phrase(line).palindrome() } );
+
+
+
+    palindromes.forEach(function (palindrome) {
+            console.log('検出されたパリンドローム:', palindrome);
+        
+        });
+}
+
+fetchPalindromes();

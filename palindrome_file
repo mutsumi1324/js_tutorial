@@ -1,0 +1,13 @@
+#!/Users/mutsumi/.nodebrew/current/bin/node
+
+let fs = require("fs");
+let Phrase = require("mutsumi-palindrome");
+
+let text = fs.readFileSync("phrases.txt", "utf-8");
+text.split("\n").forEach(function(line) {
+    let phrase = new Phrase(line) ;
+    if (phrase.palindrome()) {
+        console.log("検出されたパリンドローム: ", line);
+    }
+});
+fs.writeFileSync("palindrome.txt", fs.readFileSync("phrases.txt", "utf-8"), {encoding:"utf-8"})
